@@ -548,6 +548,14 @@ header {
 }
 .feature-card-content p {
   margin: 15px 0;
+  
+  font-family: Helvetica Neue;
+font-weight: 400;
+font-size: 18px;
+line-height: 150%;
+letter-spacing: -1.8%;
+vertical-align: middle;
+
 }
 .right-container {
   width: 100%;
@@ -587,6 +595,8 @@ header {
 .feature-card.open:nth-child(4) {
   background-color: #d5c7c0;
 }
+
+/* Feature section for moblie */
 
 
 
