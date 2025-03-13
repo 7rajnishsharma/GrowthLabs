@@ -96,77 +96,69 @@ const words = ["Engage🤩", "Optimize😎", "$$$🤑"];
 document.addEventListener('DOMContentLoaded', function () {
   const featureCards = document.querySelectorAll('.feature-card');
   const featureImage = document.getElementById('feature-image');
-
-  // Image Paths
+  // Image paths
   const featureImages = [
-      "img/f1.png",
-      "img/f2.png",
-      "img/f3.png",
-      "img/f4.png"
+    "img/f1.png",
+    "img/f2.png",
+    "img/f3.png",
+    "img/f4.png"
   ];
 
-  // Preload Images
-  featureImages.forEach(imgSrc => {
-      const img = new Image();
-      img.src = imgSrc;
+  // Preload images to avoid flicker
+  featureImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
   });
 
-  // Function to handle feature click
+  // Function to handle show/hide of content using max-height
   function handleFeatureClick(card, index) {
-      // Close all other cards
-      featureCards.forEach((otherCard, otherIndex) => {
-          if (otherCard !== card) {
-              otherCard.classList.remove('open');
-              otherCard.querySelector('.content').style.display = 'none';
-              otherCard.querySelector('.feature i').classList.remove('fa-minus');
-              otherCard.querySelector('.feature i').classList.add('fa-plus');
-          }
-      });
-
-      // Toggle clicked card
-      const content = card.querySelector('.content');
-      const icon = card.querySelector('.feature i');
-      if (card.classList.contains('open')) {
-          card.classList.remove('open');
-          content.style.display = 'none';
-          icon.classList.remove('fa-minus');
-          icon.classList.add('fa-plus');
-      } else {
-          card.classList.add('open');
-          content.style.display = 'block';
-          icon.classList.remove('fa-plus');
-          icon.classList.add('fa-minus');
-
-          // Change image
-          featureImage.src = featureImages[index];
-          featureImage.style.display = "block"; // Ensure image is visible
+    // Close all other cards
+    featureCards.forEach(otherCard => {
+      if (otherCard !== card) {
+        otherCard.classList.remove('open');
+        const otherContent = otherCard.querySelector('.feature-card-content');
+        otherContent.style.maxHeight = "0px";
+        const otherIcon = otherCard.querySelector('.feature i');
+        otherIcon.classList.remove('fa-minus');
+        otherIcon.classList.add('fa-plus');
       }
+    });
+    // Toggle clicked card
+    const content = card.querySelector('.feature-card-content');
+    const icon = card.querySelector('.feature i');
+    if (card.classList.contains('open')) {
+      card.classList.remove('open');
+      content.style.maxHeight = "0px";
+      icon.classList.remove('fa-minus');
+      icon.classList.add('fa-plus');
+    } else {
+      card.classList.add('open');
+      content.style.maxHeight = content.scrollHeight + "px";
+      icon.classList.remove('fa-plus');
+      icon.classList.add('fa-minus');
+      featureImage.src = featureImages[index];
+    }
   }
 
-  // Add click event to each feature card
+  // Attach click event to each card header
   featureCards.forEach((card, index) => {
-      const header = card.querySelector('.feature');
-      header.addEventListener('click', function () {
-          handleFeatureClick(card, index);
-      });
+    const header = card.querySelector('.feature');
+    header.addEventListener('click', function () {
+      handleFeatureClick(card, index);
+    });
   });
 
-  // Set default open feature (Only first card open)
-  featureCards.forEach((card, index) => {
-      if (index === 0) {
-          card.classList.add('open');
-          card.querySelector('.content').style.display = 'block';
-          card.querySelector('.feature i').classList.remove('fa-plus');
-          card.querySelector('.feature i').classList.add('fa-minus');
-          featureImage.src = featureImages[0];
-          featureImage.style.display = "block";
-      } else {
-          card.classList.remove('open');
-          card.querySelector('.content').style.display = 'none';
-          card.querySelector('.feature i').classList.remove('fa-minus');
-          card.querySelector('.feature i').classList.add('fa-plus');
-      }
-  });
+  // Set default: open only the first card
+  if (featureCards.length > 0) {
+    const firstCard = featureCards[0];
+    const firstContent = firstCard.querySelector('.feature-card-content');
+    const firstIcon = firstCard.querySelector('.feature i');
+    firstCard.classList.add('open');
+    firstContent.style.maxHeight = firstContent.scrollHeight + "px";
+    firstIcon.classList.remove('fa-plus');
+    firstIcon.classList.add('fa-minus');
+    featureImage.src = featureImages[0];
+  }
 });
 
 
