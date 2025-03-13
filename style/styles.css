@@ -138,7 +138,7 @@ header {
 }
 
 /* Responsive Navbar */
-@media (max-width: 768px) {
+@media (max-width: 824px) {
   .navbar {
     padding: 15px 3rem 10px 3rem;
   }
@@ -449,7 +449,6 @@ header {
   margin-top: 62px;
   padding: 40px;
   width: 380px;
-  height: 356px;
   top: 62px;
   border-radius: 24px;
   border-width: 2px;
@@ -501,10 +500,18 @@ header {
   }
 }
 
+@media (min-width: 1150px){
+  .stat-card{
+    height: 356px;
+  }
+}
+
 
 
 /* ============================================================== */
 /* ====================== Feature Section  ====================== */
+
+
 
 .container {
   max-width: 1200px;
@@ -632,8 +639,12 @@ header {
 
 /* Feature section for moblie */
 @media (max-width: 650px) {
+  .feature-section{
+    place-items: center;
+  }
   .container {
     display: none;
+    margin: auto;
   }
 
   .feature-container-mobile {
