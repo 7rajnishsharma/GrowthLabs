@@ -159,8 +159,8 @@ header {
     transition: transform 0.3s ease-in-out;
     z-index: 999;
 
-  backdrop-filter: blur(30px);
-  color: white;
+    backdrop-filter: blur(30px);
+    color: white;
   }
 
   .nav-links.active {
@@ -356,7 +356,6 @@ header {
 
 .brand-partner .brand-logo {
   height: 80px;
-  /* border: 2px solid black; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -381,6 +380,14 @@ header {
 
 .brand-partner .brand-logo img:nth-child(5) {
   height: 46px;
+}
+
+@media (max-width: 650px){
+  .brand-partner .brand-logo img:nth-child(5),
+  .brand-partner .brand-logo img:nth-child(2),
+  .brand-partner .brand-logo img:nth-child(1) {
+    display: none;
+  }  
 }
 
 
@@ -488,6 +495,12 @@ header {
   vertical-align: middle;
 }
 
+@media (max-width: 750px) {
+  .stat-card {
+    margin-top: 20px;
+  }
+}
+
 
 
 /* ============================================================== */
@@ -500,19 +513,23 @@ header {
   flex-direction: column;
   gap: 30px;
 }
+
 @media (min-width: 768px) {
   .container {
     flex-direction: row;
   }
 }
+
 .left-container {
   width: 100%;
 }
+
 @media (min-width: 768px) {
   .left-container {
     width: 50%;
   }
 }
+
 .feature-card {
   background-color: #f5f5f5;
   border: 1px solid rgba(235, 236, 240, 1);
@@ -521,16 +538,19 @@ header {
   gap: 32px;
   transition: background-color 0.3s ease-in-out;
 }
+
 .feature {
   padding: 16px;
   border-bottom: 1px solid #e2e8f0;
   cursor: pointer;
 }
+
 .feature-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .feature-header h2 {
   text-align: left;
   color: rgba(51, 49, 50, 1);
@@ -540,23 +560,26 @@ header {
   line-height: 130%;
   letter-spacing: -1.8%;
 }
+
 /* Updated class: feature-card-content replaces "content" */
 .feature-card-content {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-out;
 }
+
 .feature-card-content p {
   margin: 15px 0;
-  
+
   font-family: Helvetica Neue;
-font-weight: 400;
-font-size: 18px;
-line-height: 150%;
-letter-spacing: -1.8%;
-vertical-align: middle;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: -1.8%;
+  vertical-align: middle;
 
 }
+
 .right-container {
   width: 100%;
   height: 600px;
@@ -566,6 +589,7 @@ vertical-align: middle;
   margin-top: 24px;
   overflow: hidden;
 }
+
 #feature-image {
   border-radius: 8px;
   width: 100%;
@@ -573,30 +597,116 @@ vertical-align: middle;
   object-fit: contain;
   display: block;
 }
+
 @media (min-width: 768px) {
   .right-container {
     width: 50%;
     margin-top: 0;
   }
+
   #feature-image {
     max-width: 400px;
   }
 }
+
 /* Background Colors for open cards using nth-child */
 .feature-card.open:nth-child(1) {
   background-color: #d3d4be;
 }
+
 .feature-card.open:nth-child(2) {
   background-color: #cdd0d1;
 }
+
 .feature-card.open:nth-child(3) {
   background-color: #d4d1ca;
 }
+
 .feature-card.open:nth-child(4) {
   background-color: #d5c7c0;
 }
 
+.feature-container-mobile {
+  display: none;
+}
+
 /* Feature section for moblie */
+@media (max-width: 650px) {
+  .container {
+    display: none;
+  }
+
+  .feature-container-mobile {
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 350px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-card-mobile {
+    margin: 12px;
+  }
+
+  .feature-mobile-img {
+    max-width: 350px;
+    margin: auto;
+  }
+
+  .feature-mobile-img img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+
+  .feature-mobile-content {
+    border-radius: 16px;
+    text-align: left;
+    padding: 16px;
+  }
+
+  .feature-mobile-content h2 {
+    color: rgba(51, 49, 50, 1);
+    font-family: Helvetica Neue;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: -1.8%;
+    vertical-align: middle;
+    padding-bottom: 20px;
+  }
+
+  .feature-mobile-content p {
+    color: rgba(59, 62, 39, 1);
+    font-family: Helvetica Neue;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    letter-spacing: -1.8%;
+    vertical-align: middle;
+  }
+
+  .mb-1{
+    background-color: #f8f9e3;
+
+  }
+  .mb-2{
+    background-color: #f2f5f6;
+
+  }
+  .mb-3{
+    background-color: #f9f6ef;
+
+  }
+  .mb-4{
+    background-color: #faece5;
+
+  }
+
+}
 
 
 
@@ -1663,7 +1773,7 @@ a i {
   margin-right: 20px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .footer-left-top {
     padding: 10px;
   }
